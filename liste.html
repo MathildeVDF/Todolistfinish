@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale1.0, shrink-to-fit-no">
+    <link rel="stylesheet" type="text/css" href="stylestodo.css">
+    <title> My totool </title>
+</head>
+<body>
+    <div class="choix">
+        <a class="off" href="index.html"><img src="off.png" alt="deconnexion"></a>
+        <h1>Bonjour, Steve</h1>
+        <h2>Bienvenue sur votre liste de course</h2>
+        <div class="task">
+            <p>test taches</p>
+            <p>test taches</p>
+            <p>test taches</p>
+            <p>test taches</p>
+        </div>
+        <hr>
+        <div class="new">
+            <h3>Ajouter une nouvelle tache</h3>
+            <form action="/todolist" method="post">
+                <label for="tache">Titre :</label>
+                <input type="text" id="tache" name="tache" required
+                minlength="8" maxlength="30" size="30">
+                <div class="button">
+                    <button type="submit">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
