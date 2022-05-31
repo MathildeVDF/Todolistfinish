@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['id'])) {
     header("Location: index.php");
 }
-$bdd=new PDO('mysql:host=localhost; dbname=todolist', 'root', '');
+$bdd=new PDO('mysql:host=localhost;dbname=todolist;port=3307', 'root', '');
 $bdd -> setAttribute ( PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION );
 $bdd -> setAttribute ( PDO::ATTR_DEFAULT_FETCH_MODE , PDO::FETCH_ASSOC );
 
@@ -62,7 +62,7 @@ if (isset($_GET['id'])) {
             <div class="tachetest">
                 <a class="suppr" href="delete.php?tache=<?php echo $liste['id']?>&id=<?= $_GET['id'] ?>"><img src="sup.svg" alt="suppression"></a>
                 <h4><?php echo $liste['title']?></h4>
-                <p><?php echo $liste['date']?></p>
+                <p><?php echo date("d/m/Y", strtotime($liste['date']))?></p>
             </div>
             <?php    
             }

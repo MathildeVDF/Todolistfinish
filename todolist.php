@@ -4,16 +4,15 @@ session_start();
 if (!isset($_SESSION['id'])) {
     header("Location: index.php");
 }
-$bdd=new PDO('mysql:host=localhost; dbname=todolist', 'root', '');
+$bdd=new PDO('mysql:host=localhost;dbname=todolist;port=3307', 'root', '');
 $bdd -> setAttribute ( PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION );
 $bdd -> setAttribute ( PDO::ATTR_DEFAULT_FETCH_MODE , PDO::FETCH_ASSOC );
 $message = null;
 if(isset($_POST['task'])){
     $title = $_POST['title'];
-    $date = date("Y-m-d");
     if($title !=''){
-        $requete = $bdd -> prepare("INSERT INTO liste(title, date, user_id) VALUE(?, ?, ?)");
-        $userexist = $requete -> execute(array($title , $date, $_SESSION['id']));
+        $requete = $bdd -> prepare("INSERT INTO liste(title, date, user_id) VALUE(?, NOW(), ?)");
+        $userexist = $requete -> execute(array($title , $_SESSION['id']));
     }
     else {
     $message = "Merci de renseigné un titre à la liste.";
@@ -43,7 +42,7 @@ if(isset($_POST['task'])){
             <div class="test">
                 <a class="suppr" href="delete.php?liste=<?php echo $liste['id']?>"><img src="sup.svg" alt="suppression"></a>
                 <h4><?php echo $liste['title']?></h4>
-                <p><?php echo $liste['date']?></p>
+                <p><?php echo date("d/m/Y", strtotime($liste['date']))  ?></p>
                 <a class="suite" href="liste.php?id=<?= $liste['id'] ?>">Voir la liste</a>
             </div>
             <?php    

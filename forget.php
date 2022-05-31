@@ -1,6 +1,6 @@
 <?php
 session_start();
-$bdd=new PDO('mysql:host=localhost; dbname=todolist', 'root', '');
+$bdd=new PDO('mysql:host=localhost;dbname=todolist;port=3307', 'root', '');
 $bdd -> setAttribute ( PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION );
 $bdd -> setAttribute ( PDO::ATTR_DEFAULT_FETCH_MODE , PDO::FETCH_ASSOC );
 $message = null;
